@@ -1,25 +1,21 @@
 import { DynamicModule, Module } from '@nestjs/common';
-import { EnvConfigService } from './env-config.service';
 import { ConfigModule, ConfigModuleOptions } from '@nestjs/config';
 import { join } from 'node:path';
 
-@Module({
-  providers: [EnvConfigService],
-})
-export class EnvConfigModules extends ConfigModule {
-  static async forRoot(
-    options: ConfigModuleOptions = {},
-  ): Promise<DynamicModule> {
-    const dynamicModule = super.forRoot({
-      ...options,
-      envFilePath: [
-        join(__dirname, `../../../../.env.${process.env.NODE_ENV}`),
-      ],
-    });
-
+@Module({})
+export class EnvConfigModules {
+  static forRoot(options: ConfigModuleOptions = {}): DynamicModule {
     return {
-      ...dynamicModule,
       module: EnvConfigModules,
+      imports: [
+        ConfigModule.forRoot({
+          ...options,
+          envFilePath: [
+            join(__dirname, `../../../../.env.${process.env.NODE_ENV}`),
+          ],
+        }),
+      ],
+      exports: [ConfigModule],
     };
   }
 }
