@@ -14,7 +14,11 @@ describe('EnvConfigService unit tests', () => {
     sut = module.get<EnvConfigService>(EnvConfigService);
   });
 
-  it('should be defined', () => {
-    expect(sut).toBeDefined();
+  it('should return PORT variable', () => {
+    expect(sut.getAppPort()).toBe(3333);
+  });
+
+  it('should return NODE_ENV equal to test', () => {
+    expect(sut.getNodeEnv()).toBe('test');
   });
 });
