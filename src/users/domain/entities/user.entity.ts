@@ -19,8 +19,20 @@ export class UserEntity extends Entity<UserAttr> {
     };
   }
 
+  update(newName: string) {
+    this.name = newName;
+  }
+
+  updatePassword(newPassword: string) {
+    this.password = newPassword;
+  }
+
   get name() {
     return this.user.name;
+  }
+
+  private set name(name: string) {
+    this.user.name = name;
   }
 
   get email() {
@@ -29,6 +41,10 @@ export class UserEntity extends Entity<UserAttr> {
 
   get password() {
     return this.user.password;
+  }
+
+  private set password(password: string) {
+    this.user.password = password;
   }
 
   get createdAt() {
