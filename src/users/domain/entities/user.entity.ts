@@ -9,7 +9,7 @@ export type UserAttr = {
 
 export class UserEntity extends Entity<UserAttr> {
   constructor(
-    public readonly user: UserAttr,
+    private readonly user: UserAttr,
     id?: string,
   ) {
     super(user, id);

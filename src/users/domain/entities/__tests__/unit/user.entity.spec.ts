@@ -12,10 +12,10 @@ describe('UserEntity unit test', () => {
   });
 
   it('Test the contructor method', () => {
-    expect(sut.user.name).toEqual(userAttr.name);
-    expect(sut.user.email).toEqual(userAttr.email);
-    expect(sut.user.password).toEqual(userAttr.password);
-    expect(sut.user.createdAt).toBeInstanceOf(Date);
+    expect(sut.name).toEqual(userAttr.name);
+    expect(sut.email).toEqual(userAttr.email);
+    expect(sut.password).toEqual(userAttr.password);
+    expect(sut.createdAt).toBeInstanceOf(Date);
   });
 
   it('Getter of name field', () => {
