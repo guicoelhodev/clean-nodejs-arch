@@ -24,6 +24,12 @@ describe('UserEntity unit test', () => {
     expect(typeof sut.name).toBe('string');
   });
 
+  it('Setter of name field', () => {
+    sut['name'] = 'other name';
+
+    expect(sut.name).toEqual('other name');
+  });
+
   it('Getter of email field', () => {
     expect(sut.email).toBeDefined();
     expect(sut.email).toEqual(userAttr.email);
@@ -36,9 +42,25 @@ describe('UserEntity unit test', () => {
     expect(typeof sut.password).toBe('string');
   });
 
+  it('Setter of password field', () => {
+    sut['password'] = 'other password';
+
+    expect(sut.password).toEqual('other password');
+  });
+
   it('Getter of createdAt field', () => {
     expect(sut.createdAt).toBeDefined();
     expect(sut.createdAt).toBeInstanceOf(Date);
     expect(sut.createdAt).toBeTruthy();
+  });
+
+  it('Should update a user', () => {
+    sut.update('update name');
+    expect(sut.name).toBe('update name');
+  });
+
+  it('Should update password field', () => {
+    sut.updatePassword('update password');
+    expect(sut.password).toBe('update password');
   });
 });
