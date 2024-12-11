@@ -7,6 +7,25 @@ export type UserAttr = {
 
 export class UserEntity {
   constructor(public readonly user: UserAttr) {
-    this.user.createdAt = this.user.createdAt ?? new Date();
+    this.user = {
+      ...user,
+      createdAt: user.createdAt ?? new Date(),
+    };
+  }
+
+  get name() {
+    return this.user.name;
+  }
+
+  get email() {
+    return this.user.email;
+  }
+
+  get password() {
+    return this.user.password;
+  }
+
+  get createdAt() {
+    return this.user.createdAt;
   }
 }
