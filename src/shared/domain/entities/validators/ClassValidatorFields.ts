@@ -9,7 +9,8 @@ export abstract class ClassValidatorFields<AttrValidated>
 {
   errors: FieldsErrors = null;
   validatedData: AttrValidated = null;
-  validate(data): boolean {
+
+  validate(data: any): boolean {
     const errors = validateSync(data);
 
     if (!errors.length) return !errors.length;
