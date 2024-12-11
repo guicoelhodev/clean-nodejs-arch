@@ -1,3 +1,5 @@
+import { Entity } from '@/shared/domain/entities/entity';
+
 export type UserAttr = {
   name: string;
   email: string;
@@ -5,8 +7,12 @@ export type UserAttr = {
   createdAt?: Date;
 };
 
-export class UserEntity {
-  constructor(public readonly user: UserAttr) {
+export class UserEntity extends Entity<UserAttr> {
+  constructor(
+    public readonly user: UserAttr,
+    id?: string,
+  ) {
+    super(user, id);
     this.user = {
       ...user,
       createdAt: user.createdAt ?? new Date(),
